@@ -3,15 +3,15 @@ const {Schema, model} = require('mongoose')
 
 
 let date = new Date();
-    let DateInaYear=  date.setFullYear(date.getFullYear() + 1);
-let formattedDate = moment(DateInaYear).format('MM/DD/YYYY')
+let DateInaYear=  date.setFullYear(date.getFullYear() + 1);
+let formattedDate = moment(DateInaYear).format('MM/DD/YYYY, hh:mm a')
 console.log(formattedDate)
 
 const flightSchema = new Schema(
     {
         airline: {
             type: String, 
-            enum: ['American', 'Southwest, "United']
+            enum: ['American', 'Southwest', 'United']
         },
         flightNo: {
             type: Number, 
@@ -21,11 +21,14 @@ const flightSchema = new Schema(
         },
         departs: {
             type: Date,
-            default:{formattedDate}
+            default:[formattedDate]
         }
-
     },
     {
         timestamps: true
     }
 )
+
+const Flight = model("Flight", flightSchema);
+
+module.exports = Flight;
