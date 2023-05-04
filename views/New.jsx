@@ -9,6 +9,7 @@ const divStyle = {
   backgroundColor: "lightgray",
 };
 
+
 class New extends React.Component {
   render() {
     return (
@@ -16,18 +17,25 @@ class New extends React.Component {
         <h1> Book A New Flight</h1>
         <form action="/flights" method="POST">
           <label> Enter Airline:</label>
-          <input type="text" name="airline" required/>
+          <br />
+          <input type="text" name="airline" placeHolder='American,Southwest,or United' required/>
+          <br /><br />
           {/* <datalist>
           <option value="American">American</option>
           <option value="Southwest">Southwest</option>
           <option value="United">United</option>
           </datalist> */}
-          <label> Enter Flight Number:</label>
+          <label> Enter Flight No.:</label>
+          <br />
           <input type="number" name="flightNo" min="10" max="9999" required/>
+          <br /><br />
           <label> Enter Departure Date and Time:</label>
+          <br />
           <input type="datetime-local" name="departs"/>
+          <br />
           <input type="submit" value="Submit Flight"/>
         </form>
+        <hr />
         <a href="/flights" style={{ fontSize: "10pt" }}>
           Back to Home Page
         </a>

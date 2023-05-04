@@ -1,4 +1,5 @@
 const React = require("react");
+const moment = require('moment')
 
 const divStyle = {
   textAlign: "center",
@@ -18,18 +19,18 @@ const formattedDate = (date) => {
 
 class Show extends React.Component {
   render() {
-    const {flight} = this.props.flights;
-    console.log('this is flight show:', flight)
+    const flight = this.props.flights;
+    // console.log('this is flight show:', flight)
     return (
       <div style={divStyle}>
-        <h1> Flight Itinerary</h1>
-        <br />
+        <h1 style={{textDecoration: 'underline'}}> <strong>{flight.airline} Flight</strong> Itinerary</h1>
         <br />
         <h2> Airline: {capitalizeFirstLetter(flight.airline)}</h2>
         <br />
-        <h2>flightNo: {flight.flightNo}</h2>
+        <h2>flight No.: {flight.flightNo}</h2>
         <br />
-        <h2> Departure Date: {formattedDate(flight.departs)} </h2>
+        <h2> Departure: {formattedDate(flight.departs)} </h2>
+        <hr />
         <a href="/flights" style={{ fontSize: "10pt" }}>
           Home Page
         </a>
