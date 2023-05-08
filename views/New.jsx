@@ -1,5 +1,7 @@
 const React = require("react");
-const Nav = require('../views/components/Nav')
+const Nav = require("../views/components/Nav");
+const moment = require('moment')
+
 
 const divStyle = {
   textAlign: "center",
@@ -9,7 +11,11 @@ const divStyle = {
   backgroundColor: "lightgray",
 };
 
+const yearDate = moment().add(1, "year");
 
+function dateInYear(date) {
+  return moment(date).format("ddd MM/DD/YYYY, hh:mm a");
+}
 class New extends React.Component {
   render() {
     return (
@@ -17,23 +23,35 @@ class New extends React.Component {
         <h1> Book A New Flight</h1>
         <form action="/flights" method="POST">
           <label> Enter Airline:</label>
+          <br /><input
+            type="text"
+            name="airline"
+            placeHolder="American,Southwest,or United"
+            required
+          />
           <br />
-          <input type="text" name="airline" placeHolder='American,Southwest,or United' required/>
-          <br /><br />
-          {/* <datalist>
-          <option value="American">American</option>
-          <option value="Southwest">Southwest</option>
-          <option value="United">United</option>
-          </datalist> */}
-          <label> Enter Flight No.:</label>
           <br />
-          <input type="number" name="flightNo" min="10" max="9999" required/>
-          <br /><br />
+          <label>Enter Airport:</label>
+          <br />
+          <select name="airport">
+            <option value="AUS">AUS</option>
+            <option value="DAL">DAL</option>
+            <option value="LAX">LAX</option>
+            <option value="SAN" selected>SAN</option>
+            <option value="SEA">SEA</option>
+          </select>
+          <br />
+          <br />
+          <label> Enter Flight No. :</label>
+          <br />
+          <input type="number" name="flightNo" min="10" max="9999" required />
+          <br />
+          <br />
           <label> Enter Departure Date and Time:</label>
           <br />
-          <input type="datetime-local" name="departs"/>
+          <input type="datetime-local" name="departs" value={dateInYear(yearDate)}/>
           <br />
-          <input type="submit" value="Submit Flight"/>
+          <input type="submit" value="Submit Flight" />
         </form>
         <hr />
         <a href="/flights" style={{ fontSize: "10pt" }}>
