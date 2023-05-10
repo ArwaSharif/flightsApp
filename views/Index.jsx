@@ -15,7 +15,7 @@ function capitalizeFirstLetter(string) {
 }
 
 const formattedDate = (date) => {
-  return moment(date).format("ddd MM/DD/YYYY, hh:mm a");
+  return moment().format("ddd MM/DD/YYYY, hh:mm a");
 };
 
 class Index extends React.Component {

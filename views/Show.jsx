@@ -35,7 +35,9 @@ class Show extends React.Component {
         <h2>Flight No. : <span style={{ color: '#7c001f' }}>{flight.flightNo}</span></h2>
         <h2>
           {" "}
-          Departure:{" "} <span style={{ color: '#7c001f' }}>{!formatted ? formattedDate(flight.departs) : formatted}</span>{" "}
+          Departure:{" "} <span style={{ color: '#7c001f' }}>{flight.departs}
+          {/* {!formatted ? formattedDate(flight.departs) : formatted} */}
+          </span>{" "}
         </h2>
         <hr />
         {!flight.destination.length ? (

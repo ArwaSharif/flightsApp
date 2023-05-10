@@ -1,8 +1,9 @@
 const { Schema, model } = require("mongoose");
 const moment = require("moment");
 
-let date = new Date();
-let dateInaYear = date.setFullYear(date.getFullYear() + 1);
+// let date = new Date();
+// let dateInaYear = date.setFullYear(date.getFullYear() + 1);
+
 
 // let formattedDate = moment(DateInaYear).format('MM/DD/YYYY, hh:mm a')
 // console.log(DateInaYear)
@@ -14,23 +15,31 @@ let dateInaYear = date.setFullYear(date.getFullYear() + 1);
 // console.log(yearFromNowUTC)
 
 const destinationSchema = new Schema(
-  {
+{
     airport: {
-      type: String,
-      enum: ["AUS", "DAL", "LAX", "SAN", "SEA"],
+        type: String,
+        enum: ["AUS", "DAL", "LAX", "SAN", "SEA"],
     },
     arrival: Date,
-  },
-  {
+},
+{
     timestamps: true,
-  }
+}
 );
+    
 
 const yearDate = moment().add(1, "year");
+    // let formatted = moment(yearDate).format("ddd MM/DD/YYYY, hh:mm a")
+    
+function dateInYear(date) {
+    return moment(date).format("ddd MM/DD/YYYY, hh:mm a");
+}
+    
+    // console.log('this is date', dateInYear(yearDate))
 // let formatted = moment(yearDate).format("ddd MM/DD/YYYY, hh:mm a")
 
 function dateInYear(date) {
-  return moment(date).format("ddd MM/DD/YYYY, hh:mm a");
+  return moment().format("ddd MM/DD/YYYY, hh:mm a");
 }
 
 const flightSchema = new Schema(
@@ -47,7 +56,7 @@ const flightSchema = new Schema(
     },
     departs: {
       type: Date,
-      default: !this.departs ? dateInYear(yearDate) : this.departs,
+      default: !this.departs ? yearDate : this.departs,//dateInYear(yearDate)
     },
     airport: {
       type: String,

@@ -26,7 +26,7 @@ class New extends React.Component {
           <br /><input
             type="text"
             name="airline"
-            placeHolder="American,Southwest,or United"
+            placeholder="American,Southwest,or United"
             required
           />
           <br />
@@ -34,10 +34,10 @@ class New extends React.Component {
           <label>Enter Airport:</label>
           <br />
           <select name="airport">
+            <option defaultValue="SAN">SAN</option>
             <option value="AUS">AUS</option>
             <option value="DAL">DAL</option>
             <option value="LAX">LAX</option>
-            <option value="SAN" selected>SAN</option>
             <option value="SEA">SEA</option>
           </select>
           <br />
@@ -49,7 +49,8 @@ class New extends React.Component {
           <br />
           <label> Enter Departure Date and Time:</label>
           <br />
-          <input type="datetime-local" name="departs" value={dateInYear(yearDate)}/>
+          {/* dateInYear(yearDate) */}
+          <input type="datetime-local" name="departs" defaultValue={this.props.defaultDate}/>
           <br />
           <input type="submit" value="Submit Flight" />
         </form>

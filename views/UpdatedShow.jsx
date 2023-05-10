@@ -62,4 +62,4 @@ class UpdatedShow extends React.Component {
   }
 }
 
-module.exports = UpdatedShow;
+// module.exports = UpdatedShow;

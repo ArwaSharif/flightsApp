@@ -49,7 +49,10 @@ app.get("/flights", async (req, res) => {
 
 //NEW
 app.get("/flights/new", (req, res) => {
-  res.render("New");
+  const newFlight = new Flight();
+  const defaultDate = newFlight.departs;
+  res.render("New", {defaultDate});
+  console.log('this is default date',defaultDate)
 });
 
 //DELETE
